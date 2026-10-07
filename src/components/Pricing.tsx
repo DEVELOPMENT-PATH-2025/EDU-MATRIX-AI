@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Sparkles, Building2 } from 'lucide-react';
+import { Check, Sparkles, Building2, Smartphone, Download, GraduationCap, Users } from 'lucide-react';
 
 interface PricingProps {
   onRequestDemo: () => void;
@@ -8,52 +8,84 @@ interface PricingProps {
 export default function Pricing({ onRequestDemo }: PricingProps) {
   const plans = [
     {
-      name: 'STARTER PLAN',
-      suitable: 'Single Department / Small School',
-      price: '₹49,999',
-      period: '/ year',
+      name: 'FREE TRIAL PLAN',
+      suitable: 'Department Evaluation',
+      price: '₹0',
+      period: '/ 2 months free',
       popular: false,
+      badge: 'Limited Models',
       features: [
-        'Q-Genius Assessment Engine',
-        'AI Question Paper Generation',
-        'Syllabus Mapping',
-        'OCR Blueprint Support',
-        'Basic Academic Workflow',
-        'Email Support',
+        'Free for 2 Months Trial',
+        'Limited AI Question Models',
+        'Basic Q-Genius Faculty Access',
+        'Sample Exam Architect Student View',
+        'Standard Email Support',
       ],
-      cta: 'Get Custom Quote',
+      cta: 'Start Free Trial',
     },
     {
-      name: 'PRO PLAN',
-      suitable: 'Engineering / Degree Colleges',
+      name: 'Q-GENIUS (FACULTY LICENSE)',
+      suitable: 'For HODs, Faculty & Examination Dept',
+      price: '₹34,999',
+      period: '/ year',
+      popular: false,
+      badge: 'Faculty Assessment Engine',
+      features: [
+        'Dedicated Q-Genius Faculty Portal',
+        'Syllabus-Mapped Question Paper Generation',
+        'OCR Blueprint Support for Exam Papers',
+        'Anti-Leak Examination Templates',
+        'Question Bank & Quality Control',
+        'Multi-Role Review Workflow',
+      ],
+      cta: 'Get Q-Genius Faculty',
+    },
+    {
+      name: 'EXAM ARCHITECT AI (STUDENT LICENSE)',
+      suitable: 'For Students & Academic Coaching',
+      price: '₹19,999',
+      period: '/ year',
+      popular: false,
+      badge: 'Student Learning Proxy',
+      features: [
+        'Dedicated Student Learning Portal',
+        'Personalized Exam Preparation',
+        'Smart Chapter-Wise Revision Notes',
+        'Weak-Area Identification Drills',
+        'Predicted-Question Practice Tests',
+        'Student Readiness Analytics',
+      ],
+      cta: 'Get Exam Architect Student',
+    },
+    {
+      name: 'PRO INSTITUTIONAL SUITE',
+      suitable: 'Combined Faculty + Student Access',
       price: '₹99,999',
       period: '/ year',
       popular: true,
+      badge: 'Most Popular',
       features: [
-        'Everything in Starter Plan',
-        'Advanced Q-Genius Capabilities',
-        'Faculty Timer & Campus Utility',
-        'Automated Faculty Notifications',
-        'Biometric Attendance Timestamping',
-        'HOD Alerts & Approvals',
+        'Complete Q-Genius (Faculty)',
+        'Complete Exam Architect (Students)',
+        'Full AI Model Access',
+        'Priority HOD Approvals & Alerts',
         'Priority Technical Support',
       ],
       cta: 'Request Demo',
     },
     {
-      name: 'ENTERPRISE PLAN',
+      name: 'CAMPUS ENTERPRISE',
       suitable: 'Full Campus / University',
       price: '₹1,99,999',
       period: '/ year',
       popular: false,
+      badge: 'Full Ecosystem',
       features: [
         'Complete EDUMATRIX AI Suite',
-        'Q-Genius + Exam Architect AI',
-        'Faculty Timer & Campus Utility',
-        'Custom Institutional Integration',
-        'Dedicated Cloud Deployment',
-        'Priority 24/7 Support',
-        'Custom Workflow Development',
+        'Unlimited Faculty & Student Seats',
+        'Custom Cloud Integration',
+        'Dedicated Account Manager',
+        '24/7 Priority Support',
       ],
       cta: 'Get Custom Quote',
     },
@@ -67,18 +99,18 @@ export default function Pricing({ onRequestDemo }: PricingProps) {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold border border-cyan-500/20">
             <Building2 className="w-3.5 h-3.5" />
-            <span>Institutional Investment</span>
+            <span>Institutional Investment & Licensing</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-            Simple, Transparent Institutional Pricing
+            Tailored Pricing for Faculty & Students
           </h2>
           <p className="text-base sm:text-lg text-slate-300">
-            Start with one department and scale EDUMATRIX AI across your entire institution.
+            Q-Genius is built for faculty examination workflows, while Exam Architect AI empowers student preparation. Choose standalone or campus-wide plans.
           </p>
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -88,13 +120,17 @@ export default function Pricing({ onRequestDemo }: PricingProps) {
                   : 'border-slate-800 shadow-xl'
               }`}
             >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold shadow-md uppercase tracking-wider">
-                  Most Popular
+              {plan.badge && (
+                <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold shadow-md uppercase tracking-wider ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    : 'bg-slate-900 text-cyan-400 border border-slate-700'
+                }`}>
+                  {plan.badge}
                 </div>
               )}
 
-              <div className="space-y-6">
+              <div className="space-y-6 pt-2">
                 <div>
                   <span className="text-xs font-mono font-bold text-cyan-400 tracking-wider block mb-1">
                     {plan.name}
@@ -103,10 +139,10 @@ export default function Pricing({ onRequestDemo }: PricingProps) {
                 </div>
 
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl sm:text-5xl font-display font-extrabold text-white">
+                  <span className="text-3xl sm:text-4xl font-display font-extrabold text-white">
                     {plan.price}
                   </span>
-                  <span className="text-slate-400 text-sm font-medium">{plan.period}</span>
+                  <span className="text-slate-400 text-xs font-medium">{plan.period}</span>
                 </div>
 
                 <div className="pt-4 border-t border-slate-900 space-y-3">
@@ -137,10 +173,38 @@ export default function Pricing({ onRequestDemo }: PricingProps) {
           ))}
         </div>
 
+        {/* Faculty Timer Google Play Store Callout */}
+        <div className="mt-16 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-cyan-500/30 p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+          <div className="space-y-2 text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold">
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>Mobile Faculty Utility</span>
+            </div>
+            <h3 className="text-2xl font-display font-bold text-white">
+              Faculty Timer & Campus Utility App
+            </h3>
+            <p className="text-slate-300 text-sm max-w-xl">
+              Manage lecture schedules, attendance timestamping, and HOD alerts directly from your mobile device. Download the official companion app on the Google Play Store.
+            </p>
+          </div>
+          <a
+            href="https://play.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-4 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 flex items-center gap-3 shrink-0 shadow-lg hover:border-cyan-500/50 transition-colors"
+          >
+            <Download className="w-5 h-5 text-cyan-400" />
+            <div className="text-left">
+              <span className="block text-[10px] uppercase font-mono text-slate-400">Get it on</span>
+              <span className="text-sm font-semibold">Google Play Store</span>
+            </div>
+          </a>
+        </div>
+
         {/* Custom Deployment Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-slate-400">
-            Need a customized deployment?{' '}
+            Need a customized deployment or faculty/student trial?{' '}
             <button
               onClick={onRequestDemo}
               className="text-cyan-400 font-semibold hover:underline focus:outline-none"

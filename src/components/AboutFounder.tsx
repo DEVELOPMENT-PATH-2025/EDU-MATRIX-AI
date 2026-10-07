@@ -3,6 +3,9 @@ import { Linkedin, Github, Cpu, Shield, Sparkles, Building2, Code2 } from 'lucid
 
 export default function AboutFounder() {
   const techStack = [
+    'TypeScript',
+    'React',
+    'Angular',
     'Java 21',
     'Spring Boot',
     'Spring AI',
