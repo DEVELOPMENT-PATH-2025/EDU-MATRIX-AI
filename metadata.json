@@ -1,0 +1,7 @@
+{
+  "name": "EDUMATRIX AI",
+  "description": "AI-Powered Academic Operations & Assessment Platform for Modern Educational Institutions",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
