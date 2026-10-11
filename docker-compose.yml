@@ -1,0 +1,17 @@
+services:
+  edu-matrix-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edu-matrix-ai
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:80/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
